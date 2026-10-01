@@ -9,9 +9,13 @@ export const Menu = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
-  useEffect(() => {
-    setVisibleCount(INITIAL_COUNT);
-  }, [activeFilter]);
+useEffect(() => {
+  const handler = (e) => {
+    setActiveFilter(e.detail);
+  };
+  window.addEventListener('openMenuCategory', handler);
+  return () => window.removeEventListener('openMenuCategory', handler);
+}, []);
 
   const filteredItems =
     activeFilter === 'all'

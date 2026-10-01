@@ -1,5 +1,5 @@
 export const siteData = {
-  // ── INFO GENERAL ──
+  // INFO GENERAL
   info: {
     name: "InGen Kitchen",
     tagline: "Sabores para Compartir",
@@ -15,7 +15,7 @@ export const siteData = {
     ],
   },
 
-  // ── MENÚ ──
+  // MENÚ 
   menu: {
     title: "Nuestra carta",
     subtitle: "Fuego, maduración y técnica en cada plato.",
@@ -28,7 +28,7 @@ export const siteData = {
       { id: "cocktails", label: "Coctelería" },
     ],
     items: [
-      // ── ENTRADAS ──
+      // ENTRADAS
       {
         id: "b1",
         categoryId: "starters",
@@ -56,7 +56,7 @@ export const siteData = {
         highlight: false,
       },
 
-      // ── CARNES & FUEGOS ──
+      // CARNES & FUEGOS
       {
         id: "m1",
         categoryId: "mains",
@@ -84,7 +84,6 @@ export const siteData = {
         highlight: false,
       },
 
-      // ── COCINA DE AUTOR ──
       {
         id: "s1",
         categoryId: "signature",
@@ -112,7 +111,7 @@ export const siteData = {
         highlight: false,
       },
 
-      // ── POSTRES ──
+      // POSTRES
       {
         id: "d1",
         categoryId: "desserts",
@@ -140,7 +139,6 @@ export const siteData = {
         highlight: false,
       },
 
-      // ── COCTELERÍA ──
       {
         id: "c1",
         categoryId: "cocktails",
@@ -170,7 +168,7 @@ export const siteData = {
     ],
   },
 
-  // ── SECTORES ──
+  // SECTORES
   sectors: [
     { id: "salon", name: "Salón Principal" },
     { id: "terraza", name: "Terraza Verde (Outdoor)" },

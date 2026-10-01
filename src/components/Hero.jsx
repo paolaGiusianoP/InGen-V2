@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
-import { useHeroScroll } from './useHeroScroll';
+import { useHeroScroll } from '../hooks/useHeroScroll';
 import { siteData } from '../data/siteData';
+import { EmbersCanvas } from './EmbersCanvas';
 
 export default function Hero({ ready = true }) {
   const ref = useRef(null);
@@ -24,8 +25,12 @@ export default function Hero({ ready = true }) {
   const open = isOpen();
 
   return (
-    <section ref={ref} data-ready={ready} className="relative w-full h-screen min-h-[700px] flex items-end overflow-hidden bg-[#0a0f0d]">
-
+    <section
+      ref={ref}
+      id="hero"
+      data-ready={ready}
+      className="relative w-full h-screen min-h-[700px] flex items-end overflow-hidden bg-[#0a0f0d]"
+    >
       {/* FOTO DE FONDO */}
       <div className="hero-bg absolute inset-0 z-0">
         <img
@@ -33,28 +38,43 @@ export default function Hero({ ready = true }) {
           alt="InGen Kitchen"
           className="kenburns h-full w-full object-cover object-center opacity-75"
         />
+
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(10,15,13,0.9) 0%, rgba(10,15,13,0.15) 40%, rgba(10,15,13,0.98) 100%)',
+              'linear-gradient(180deg, rgba(10,15,13,0.95) 0%, rgba(10,15,13,0.55) 40%, rgba(10,15,13,0.98) 100%)',
           }}
         />
-        {/* Viñeta lateral */}
+
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 80% 70% at 20% 50%, rgba(10,15,13,0.5) 0%, transparent 60%)',
+              'radial-gradient(ellipse 80% 70% at 20% 50%, rgba(10,15,13,0.65) 0%, transparent 60%)',
           }}
+        />
+
+        <div
+          className="absolute inset-0 bg-[#0a0f0d]/40"
+          style={{ mixBlendMode: 'multiply' }}
         />
       </div>
+
+      {/* BRASAS 3D */}
+      <EmbersCanvas className="absolute inset-0 z-[5]" />
+
+      <div
+        className="pointer-events-none absolute inset-0 z-[6]"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 60% at 50% 50%, transparent 0%, rgba(10,15,13,0.55) 100%)',
+        }}
+      />
 
       {/* CONTENIDO */}
       <div className="hero-content relative z-10 w-full mx-auto max-w-[1400px] px-6 pb-32 lg:px-12 lg:pb-40">
         <div className="max-w-3xl space-y-8">
-
-          {/* Eyebrow */}
           <div className="hero-in flex items-center gap-3" style={{ '--d': '100ms' }}>
             <span className="h-px w-10 bg-amber-500" />
             <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.4em] text-amber-500">
@@ -62,7 +82,6 @@ export default function Hero({ ready = true }) {
             </span>
           </div>
 
-          {/* Wordmark */}
           <h1
             className="font-serif leading-[0.9] tracking-[-0.03em] text-slate-50"
             style={{
@@ -74,7 +93,6 @@ export default function Hero({ ready = true }) {
             <span className="line-mask italic text-slate-300"><span style={{ '--d': '400ms' }}>Kitchen</span></span>
           </h1>
 
-          {/* Subtitle */}
           <p className="hero-in max-w-xl font-sans text-base leading-relaxed text-slate-300 sm:text-lg" style={{ '--d': '600ms' }}>
             {siteData.info.subtitle}
           </p>
@@ -99,11 +117,10 @@ export default function Hero({ ready = true }) {
         </div>
       </div>
 
-      {/* aBARRA INFERIOR */}
+      {/* BARRA INFERIOR */}
       <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-amber-900/30 bg-[#0a0f0d]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-12">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.25em] text-slate-400">
-            {/* Badge abierto/cerrado */}
             <span className="flex items-center gap-2">
               <span
                 className={`inline-block h-1.5 w-1.5 rounded-full ${
@@ -114,8 +131,6 @@ export default function Hero({ ready = true }) {
                 {open ? 'Abierto ahora' : 'Cerrado'}
               </span>
             </span>
-
-            {/* Horarios */}
             <span className="hidden sm:inline">{siteData.info.hours[0].days} · {siteData.info.hours[0].time}</span>
             <span className="hidden lg:inline">{siteData.info.hours[1].days} · {siteData.info.hours[1].time}</span>
           </div>
@@ -130,7 +145,6 @@ export default function Hero({ ready = true }) {
           </a>
         </div>
       </div>
-
     </section>
   );
 }

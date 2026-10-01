@@ -9,7 +9,7 @@ import { Reservation } from './components/Reservation'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { WhatsAppFloat } from './components/WhatsAppFloat'
-import { useMeniscus } from './components/useMeniscus'
+import { useMeniscus } from './hooks/useMeniscus'
 
 const Curve = ({ children, className = '' }) => {
   const ref = useRef(null)

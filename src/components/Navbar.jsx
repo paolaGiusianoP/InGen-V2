@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useActiveSection } from './useActiveSection';
+import { useActiveSection } from '../hooks/useActiveSection';
 import { siteData } from '../data/siteData';
 
 export const Navbar = () => {
@@ -51,7 +51,7 @@ export const Navbar = () => {
         <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 lg:px-12">
           {/* Logo & Marca */}
           <a
-            href="#"
+            href="#hero"
             onClick={close}
             className="font-serif text-lg tracking-tight text-slate-100 transition-opacity hover:opacity-80"
           >
@@ -76,7 +76,6 @@ export const Navbar = () => {
               </React.Fragment>
             ))}
           </nav>
-
         </div>
       </header>
 

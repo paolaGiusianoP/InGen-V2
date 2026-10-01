@@ -24,7 +24,32 @@ export const Preloader = ({ onDone, onLift }) => {
       setPhase('lift');
       onLift?.();
     }, DURATION + 650);
-    const t3 = setTimeout(() => onDone?.(), DURATION + 1650);
+    const t3 = setTimeout(() => {
+  onDone?.();
+
+  const hero = document.getElementById('hero');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (hero && !reduced) {
+    const spark = document.createElement('div');
+    spark.className = 'spark-flyer';
+    spark.style.left = '50%';
+    spark.style.top = '50%';
+    document.body.appendChild(spark);
+
+    spark.animate(
+      [
+        { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+        { transform: 'translate(-50%, -50%) scale(3)', opacity: 0.6, offset: 0.5 },
+        { transform: 'translate(-50%, 30vh) scale(0)', opacity: 0 },
+      ],
+      {
+        duration: 1200,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      }
+    ).onfinish = () => spark.remove();
+  }
+}, DURATION + 1650);
 
     return () => {
       cancelAnimationFrame(raf);
