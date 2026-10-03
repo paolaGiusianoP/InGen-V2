@@ -17,7 +17,7 @@ export function MascotGuide() {
   }, []);
 
   const topPos = 10 + scrollProgress * 78; 
-  const leftPos = 10 + Math.sin(scrollProgress * Math.PI * 2) * 35 + 35; // Movimiento en S
+  const leftPos = 10 + Math.sin(scrollProgress * Math.PI * 2) * 35 + 35; 
   const rotation = Math.sin(scrollProgress * Math.PI * 4) * 12; 
 
   return (

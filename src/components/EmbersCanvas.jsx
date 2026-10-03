@@ -1,6 +1,8 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import { SteakModel } from './SteakModel';
+
 
 const VERT = /* glsl */ `
   attribute vec4 aSeed;
@@ -80,7 +82,7 @@ function Embers() {
       seed[i * 4 + 0] = Math.random();
       seed[i * 4 + 1] = Math.random();
       seed[i * 4 + 2] = Math.random();
-      seed[i * 4 + 3] = Math.random();   
+      seed[i * 4 + 3] = Math.random();
     }
 
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
@@ -210,20 +212,19 @@ function EmbersTrail() {
   }, []);
 
   const TRAIL_VERT = useMemo(() => VERT
-    .replace('aSeed.x * 0.6', 'aSeed.x * 0.35')   
-    .replace('+ 3.5', '+ 3.5')                     
-    .replace('(aSeed.z * aSeed.z * 14.0 + 2.5)', '(aSeed.z * aSeed.z * 20.0 + 4.0)') 
+    .replace('aSeed.x * 0.6', 'aSeed.x * 0.35')
+    .replace('(aSeed.z * aSeed.z * 14.0 + 2.5)', '(aSeed.z * aSeed.z * 20.0 + 4.0)')
   , []);
 
   const TRAIL_FRAG = useMemo(() => FRAG
-    .replace('* 1.5', '* 0.5')                  
+    .replace('* 1.5', '* 0.35')
   , []);
 
   useFrame((state, delta) => {
     if (!matRef.current) return;
 
-    uniforms.uTime.value += delta * 0.7;          
-    uniforms.uMouse.value.lerp(mouseTarget.current, 0.03);  
+    uniforms.uTime.value += delta * 0.7;
+    uniforms.uMouse.value.lerp(mouseTarget.current, 0.03);
 
     const hero = document.getElementById('hero');
     if (hero) {
@@ -255,16 +256,36 @@ function EmbersTrail() {
   );
 }
 
-
 export const EmbersCanvas = ({ className = '' }) => {
   return (
-    <div className={`pointer-events-none ${className}`}>
+    <div
+      className={`pointer-events-none ${className}`}
+      style={{ opacity: 0.7 }}
+    >
       <Canvas
         camera={{ position: [0, 0, 6], fov: 55 }}
         dpr={[1, 1.75]}
-        gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
+        gl={{
+          alpha: true,
+          antialias: false,
+          powerPreference: 'high-performance',
+        }}
       >
+        <ambientLight intensity={0.6} />
+        <directionalLight
+          position={[5, 5, 5]}
+          intensity={2}
+          color="#fff5e0"
+        />
+        <pointLight position={[-3, 2, 3]} intensity={1} color="#f59e0b" />
+        <pointLight position={[3, -2, 2]} intensity={0.5} color="#fbbf24" />
+
         <EmbersTrail />
+
+        <Suspense fallback={null}>
+          <SteakModel position={[3, 0.4, 0]} scale={0.2} rotation={[Math.PI / 5, 0, 0]} />
+        </Suspense>
+
         <Embers />
       </Canvas>
     </div>

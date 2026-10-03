@@ -45,7 +45,7 @@ export const WhatsAppFloat = () => {
     >
       <div
         className={`
-          mb-3 hidden w-64 rounded-2xl border border-amber-500/20 bg-[#0a0f0d]/95 p-4
+          mb-3 hidden w-64 rounded-2xl border border-amber-500/20 bg-[#1b130d]/95 p-4
           text-slate-100 shadow-2xl backdrop-blur-md
           transition-all duration-300 md:block
           ${isHovered

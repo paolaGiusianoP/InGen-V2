@@ -43,15 +43,15 @@ export const Navbar = () => {
           transition-all duration-500 ease-out
           ${
             scrolled
-              ? 'border-b border-amber-900/20 bg-[#0a0f0d]/90 py-3 backdrop-blur-md shadow-lg shadow-black/40'
-              : 'border-b border-transparent bg-transparent py-6'
+              ? 'border-b border-amber-900/20 bg-[#1b130d]/90 py-3 backdrop-blur-md shadow-lg shadow-black/40'
+              : 'border-b border-amber-900/30 bg-[#1b130d]/95 py-4 backdrop-blur-md'
           }
         `}
       >
         <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 lg:px-12">
           {/* Logo & Marca */}
           <a
-            href="#hero"
+            href="#"
             onClick={close}
             className="font-serif text-lg tracking-tight text-slate-100 transition-opacity hover:opacity-80"
           >
@@ -76,6 +76,21 @@ export const Navbar = () => {
               </React.Fragment>
             ))}
           </nav>
+
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={open}
+            className="flex h-10 w-10 items-center justify-center text-slate-100 transition-colors hover:text-amber-500 md:hidden"
+          >
+            <span className="relative block h-3 w-6">
+              <span className={`absolute left-0 h-0.5 w-full bg-current transition-transform duration-300 ${open ? 'top-1/2 rotate-45' : 'top-0'}`} />
+              <span className={`absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-current transition-opacity duration-300 ${open ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`absolute left-0 h-0.5 w-full bg-current transition-transform duration-300 ${open ? 'top-1/2 -rotate-45' : 'bottom-0'}`} />
+            </span>
+          </button>
+
         </div>
       </header>
 
@@ -83,7 +98,7 @@ export const Navbar = () => {
       <div
         aria-hidden={!open}
         className={`
-          fixed inset-0 z-40 bg-[#0a0f0d] transition-opacity duration-500 md:hidden
+          fixed inset-0 z-40 bg-[#1b130d] transition-opacity duration-500 md:hidden
           ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}
         `}
       >

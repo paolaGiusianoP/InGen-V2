@@ -61,7 +61,7 @@ export const Concept = () => {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover opacity-40"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d] via-[#0a0f0d]/70 to-[#0a0f0d]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1b130d] via-[#1b130d]/70 to-[#1b130d]/40" />
 
             {/* Contenido */}
             <div className="relative z-10 p-8 lg:p-12">
@@ -106,8 +106,8 @@ export const Concept = () => {
                 className={`
                   group rounded-xl p-6 transition-all duration-300 hover:-translate-y-1
                   ${isFeatured
-                    ? 'border border-amber-500/30 bg-gradient-to-br from-[#121915] to-[#1a1a10] shadow-lg shadow-amber-500/5'
-                    : 'border border-amber-900/20 bg-[#121915]/60 hover:border-amber-500/40 hover:bg-[#121915]'
+                    ? 'border border-amber-500/30 bg-gradient-to-br from-[#261a11] to-[#33231a] shadow-lg shadow-amber-500/5'
+                    : 'border border-amber-900/20 bg-[#261a11]/60 hover:border-amber-500/40 hover:bg-[#261a11]'
                   }
                 `}
               >

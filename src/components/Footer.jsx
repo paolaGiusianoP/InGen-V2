@@ -7,15 +7,15 @@ export const Footer = () => {
   )}`;
 
   return (
-    <footer className="relative overflow-hidden border-t border-amber-900/20 bg-[#0a0f0d] pt-20 pb-12 text-slate-200">
+    <footer className="wood relative overflow-hidden bg-[#1b130d] pt-24 pb-12 text-slate-200">
       <div className="absolute -bottom-20 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-500/5 blur-[100px]" />
 
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="max-w-3xl">
-          <span className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-amber-500">
+          <span className="font-hand text-3xl text-amber-400">
             Experiencia Gastronómica
           </span>
-          <h2 className="mt-3 font-serif text-4xl font-bold text-slate-100 sm:text-6xl">
+          <h2 className="mt-3 display text-5xl text-slate-100 sm:text-7xl">
             Asegurá tu mesa en el origen del sabor.
           </h2>
           <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-slate-400">
@@ -26,7 +26,7 @@ export const Footer = () => {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group mt-8 inline-flex items-center gap-3 rounded-full bg-amber-500 px-8 py-4 font-sans text-xs font-semibold uppercase tracking-widest text-slate-950 shadow-lg shadow-amber-500/10 transition-all hover:bg-amber-400 hover:shadow-amber-500/20"
+            className="group mt-8 inline-flex items-center gap-3 border-2 border-amber-500 bg-amber-500 px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-950 transition-colors hover:bg-transparent hover:text-amber-400"
           >
             <svg
               viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ export const Footer = () => {
 
         <p
           aria-hidden="true"
-          className="mt-16 select-none overflow-hidden font-serif italic leading-none text-amber-500/[0.07]"
+          className="mt-16 select-none overflow-hidden display italic text-amber-500/[0.09]"
           style={{
             fontSize: 'clamp(3.5rem, 12vw, 11rem)',
             letterSpacing: '-0.03em',

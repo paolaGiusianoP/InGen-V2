@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-export const Reveal = ({ as: Tag = 'div', delay = 0, className = '', children }) => {
+export const Reveal = ({ as: Tag = 'div', delay = 0, variant = '', className = '', children }) => {
   const ref = useRef(null)
   const [shown, setShown] = useState(false)
 
@@ -24,7 +24,7 @@ export const Reveal = ({ as: Tag = 'div', delay = 0, className = '', children })
     <Tag
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`reveal ${shown ? 'is-in' : ''} ${className}`}
+      className={`reveal ${variant ? `reveal-${variant}` : ''} ${shown ? 'is-in' : ''} ${className}`}
     >
       {children}
     </Tag>
